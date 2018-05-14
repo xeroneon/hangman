@@ -2,7 +2,7 @@
 var guessRemain = 12;
 
 //words that can be guessed
-var words = ["dialect", "healthy", "quickly", "amplify", "voyager"]
+var words = ["dialect", "healthy", "quickly", "amplify", "voyager", "chagrin", "journey"]
 
 //letters that have been guessed. empty to store them as they are guessed
 var guessLetters = [];
