@@ -4,33 +4,74 @@
 
 <head>
     <title>Hangman</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
-<body>
+<body class="green">
     <main>
-        <p id="current-word">
-            <span>Current Word:&nbsp;</span>
-            <span id="0">_</span>
-            <span id="1">_</span>
-            <span id="2">_</span>
-            <span id="3">_</span>
-            <span id="4">_</span>
-            <span id="5">_</span>
-            <span id="6">_</span>
-        </p>
-        <br>
-        <p>Guesses Remaining: <span id="guess-remain">12</span></p>
-        <br>
-        <p>Letters Guessed:&nbsp;<span id="guess-letters"></span></p>
-        <br>
-        <p>Wins: <span id="wins">0</span></p>
-        <p>Losses: <span id="losses">0</span></p>
+        <div class="center white-text">
+            <div class="row red">
+                <div class="col s12">
+                    <h1>Hangman!</h1>
+                </div>
+            </div>
+            <div class="row red">
+                <div class="col s12">
+                    <h4>Start pressing keys to guess letters!</h4>
+                </div>
+            </div>
+            <div class="row blue">
+                <div class="col s12">
+                    <h1 id="current-word">
+                        <span>Current Word:&nbsp;</span>
+                        <span id="0">_</span>
+                        <span id="1">_</span>
+                        <span id="2">_</span>
+                        <span id="3">_</span>
+                        <span id="4">_</span>
+                        <span id="5">_</span>
+                        <span id="6">_</span>
+                    </h1>
+                </div>
+            </div>
+            <div class="row green">
+                <div class="col s12">
+                    <h3>Letters Guessed:&nbsp;
+                        <span id="guess-letters"></span>
+                    </h3>
+                </div>
+            </div>
+            <div class="row green">
+                <div class="col s12">
+                    <h3>Guesses Remaining:
+                        <span id="guess-remain">12</span>
+                    </h3>
+                </div>
+            </div>
+            <div class="row green">
+                <div class="col s6">
+                    <h3>Wins:
+                        <span id="wins">0</span>
+                    </h3>
+                </div>
+                <div class="col s6">
+                    <h3>Losses:
+                        <span id="losses">0</span>
+                    </h3>
+                </div>
+            </div>
+        </div>
 
 
 
     </main>
     <script src="assets/javascript/game.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 </body>
 
 </html>
