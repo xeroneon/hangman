@@ -12,6 +12,10 @@ var letterPress;
 
 var guessedWord = [];
 
+var wins = 0;
+
+var losses = 0;
+
 
 //function to take a random word from word list and use it for current word
 var currentWord = words[Math.floor(Math.random() * words.length)];
@@ -48,6 +52,8 @@ document.onkeyup = function (event) {
             guessLetters = [];
             guessedWord = [];
             currentWord = words[Math.floor(Math.random() * words.length)];
+            wins++;
+            document.getElementById("wins").textContent = wins;
             alert("you won!");
         }
         // guessedWord = guessedWord + letterPress;
@@ -81,6 +87,8 @@ document.onkeyup = function (event) {
                 guessLetters = [];
                 guessedWord = [];
                 currentWord = words[Math.floor(Math.random() * words.length)];
+                losses++
+                document.getElementById("losses").textContent = losses;
                 alert("You Lost")
             }
         }
