@@ -2,7 +2,7 @@
 var guessRemain = 12;
 
 //words that can be guessed
-var words = ["dialect", "quickly", "amplify", "voyager", "chagrin", "journey"]
+var words = ["cascadingstylesheet", "html", "javascript", "github"]
 
 //letters that have been guessed. empty to store them as they are guessed
 var guessLetters = [];
@@ -17,9 +17,17 @@ var wins = 0;
 var losses = 0;
 
 
+
 //function to take a random word from word list and use it for current word
 var currentWord = words[Math.floor(Math.random() * words.length)];
 //console.log(currentWord);
+for (word = 0; word < currentWord.length; word++) {
+    guessedWord.push("_");
+    var span = document.createElement("span")
+    span.id = word;
+    span.textContent = "_ ";
+    document.getElementById("current-word").appendChild(span);
+}
 
 //function to get the letter that has been pressed
 document.onkeyup = function (event) {
@@ -27,64 +35,70 @@ document.onkeyup = function (event) {
     letterPress = event.key.toLowerCase();
     // console.log("letterPress", letterPress);
     //checks to see if letter matches any letters in current word
-    if (currentWord.match(letterPress)) {
-        // console.log("match");
-        //sets i to index of letter pressed
-        var i = currentWord.indexOf(letterPress);
-        //changes html to be the letter that was pressed
-        document.getElementById(i).textContent = letterPress;
-        
-        for (k = 0; k < 7; k++) {
-            //if letter is matched then it will place the letter in the right place in an array for comparison
-            guessedWord.splice(k, 1, document.getElementById(k).textContent);
-            // console.log("guessedWord", guessedWord);
 
-        }
-        //use .join to make array a string with no commas and if they match then alert win and reset board
-        if (guessedWord.join("") === currentWord) {
-            for (j = 0; j < 7; j++) {
-                document.getElementById(j).textContent = "_";
-            }
-            document.getElementById("guess-remain").textContent = "12";
-            guessRemain = 12;
-            document.getElementById("guess-letters").textContent = " ";
-            guessLetters = [];
-            guessedWord = [];
-            currentWord = words[Math.floor(Math.random() * words.length)];
-            wins++;
-            document.getElementById("wins").textContent = wins;
-            alert("you won!");
-        }
-
-    }
-
-    else {
-        //if letter isnt in the guessed array add it to the array
-        if (guessLetters.indexOf(letterPress) === -1) {
-            guessLetters.push(letterPress);
-            document.getElementById("guess-letters").textContent = guessLetters;
-            //score goes down by 1
-            guessRemain--;
-            document.getElementById("guess-remain").textContent = guessRemain;
-            // console.log("guessRemain", guessRemain);
-            // console.log("guessLetters", guessLetters);
-
-
-            //if score is zero reset board
-            if (guessRemain === 0) {
-                for (j = 0; j < 7; j++) {
-                    document.getElementById(j).textContent = "_";
-                }
+    for (i = 0; i < currentWord.length; i++) {
+        if (currentWord.charAt(i) === letterPress) {
+            console.log("match");
+            guessedWord.splice(i, 1, letterPress);
+            console.log("guessedWord", guessedWord);
+            //changes html to be the letter that was pressed
+            document.getElementById(i).textContent = letterPress;
+            if (guessedWord.join("") === currentWord) {
                 document.getElementById("guess-remain").textContent = "12";
                 guessRemain = 12;
                 document.getElementById("guess-letters").textContent = " ";
                 guessLetters = [];
                 guessedWord = [];
                 currentWord = words[Math.floor(Math.random() * words.length)];
-                losses++
-                document.getElementById("losses").textContent = losses;
-                alert("You Lost")
+                for (newWord = 0; newWord < currentWord.length; newWord++) {
+                    guessedWord.push("_");
+                    document.getElementById(newWord).textContent = "_ ";
+                }
+                wins++;
+                document.getElementById("wins").textContent = wins;
+                alert("win");
+            }
+        }
+
+        else {
+            if (guessLetters.indexOf(letterPress) === -1) {
+                //if letter isnt in the guessed array add it to the array
+                // if (guessLetters.indexOf(letterPress) === -1) {
+                guessLetters.push(letterPress);
+                document.getElementById("guess-letters").textContent = guessLetters;
+                //score goes down by 1
+                guessRemain--;
+                document.getElementById("guess-remain").textContent = guessRemain;
+                // console.log("guessRemain", guessRemain);
+                // console.log("guessLetters", guessLetters);
+
+
+                //if score is zero reset board
+                if (guessRemain === 0) {
+                    // for (j = 0; j < 7; j++) {
+                    //     document.getElementById(j).textContent = "_";
+                    // }
+                    document.getElementById("guess-remain").textContent = "12";
+                    guessRemain = 12;
+                    guessLetters = [];
+                    document.getElementById("guess-letters").textContent = " ";
+                    guessedWord = [];
+                    currentWord = words[Math.floor(Math.random() * words.length)];
+                    for (newWord = 0; newWord < currentWord.length; newWord++) {
+                        guessedWord.push("_");
+                        document.getElementById(newWord).textContent = "_ ";
+                    }
+                    losses++;
+                    document.getElementById("losses").textContent = losses;
+                    alert("You Lost");
+
+
+
+                }
+                // }
             }
         }
     }
 };
+
+
