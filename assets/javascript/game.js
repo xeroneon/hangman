@@ -2,7 +2,7 @@
 var guessRemain = 12;
 
 //words that can be guessed
-var words = ["cascadingstylesheet", "html", "javascript", "github"]
+var words = ["cascadingstylesheet", "html", "javascript", "github", "doctype", "anchor", "canvas", "database", "refactor"]
 
 //letters that have been guessed. empty to store them as they are guessed
 var guessLetters = [];
